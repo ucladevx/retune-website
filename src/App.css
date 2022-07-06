@@ -15,7 +15,7 @@
   flex-direction: column;
   align-content: center;
   align-items: center;
-  background-color:black;
+  background-color:transparent;
   color: white;
 }
 
@@ -23,7 +23,7 @@
   height: 100%;
   width: 100%;
   position: fixed;
-
+  z-index: -1;
 }
 
 #email-box-container{
@@ -48,6 +48,8 @@
 #explanation{
   font-size: 18px;
   padding-top: 2vh;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 #retune-title{
