@@ -1,5 +1,5 @@
 import './App.css';
-import background from "./background.png"
+import background from "./bg.png"
 
 function App() {
   return (
@@ -23,8 +23,8 @@ function App() {
           </div>
           <div id="email-box">
             <div>
-              <input id="email-input" type="text"></input>
-              <button id="email-button">Tune in!</button>
+              <input id="email-input" type="text" placeholder="Enter Email" className="montserrat"></input>
+              <button id="email-button" className="montserrat">Tune in!</button>
             </div>
           </div>
         </div>
