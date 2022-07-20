@@ -60,6 +60,10 @@
   left:-75px; 
   justify-content: center;
 }
+#email-button:active,
+#email-button.lit{
+  color:black;
+}
 
 #explanation{
   font-size: 18px;
