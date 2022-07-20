@@ -63,6 +63,7 @@
 #email-button:active,
 #email-button.lit{
   color:black;
+  border-color:black;
 }
 
 #explanation{
