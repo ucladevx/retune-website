@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -40,7 +40,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://devx.ucladevx.com",
+  "homepage": "http://retune.ucladevx.com",
   "devDependencies": {
     "gh-pages": "^6.3.0"
   }
