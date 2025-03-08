@@ -1,39 +1,14 @@
 import './App.css';
 import background from "./bg.png"
-import { useEffect, useState } from 'react';
-import axios from 'axios'
-import Airtable from 'airtable'
-
+import { useState } from 'react';
 
 function App() {
 
   const [email, setEmail] = useState("");
-  const [emaiLCreated, setEmailCreated] = useState(false);
-  axios.defaults.headers.post['Content-Type'] = 'application/json';
-  axios.defaults.headers['Authorization'] = 'Bearer API_KEY';
-
-
-  const sendEmail = async () => {
-    console.log(process.env.REACT_APP_AIRTABLE)
-    const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE}).base('appgdBKpbthH8ffmP'); 
-        base('Teams').create([
-          {
-            "fields": {
-              "Name": email,
-            }
-          },
-        ], function(err, records) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-          setEmailCreated(true);
-        });
-  }
+  const [emailCreated, setEmailCreated] = useState(false);
 
   const uploadEmail = async (email) => {
-   console.log(email);
-   await sendEmail(email);
+    setEmailCreated(true);
   };
 
   return (
@@ -42,7 +17,7 @@ function App() {
       <div id="content-container">
         <div id="title-slogan-container">
           <div id="retune-title" className="pacifico">
-            Replay
+            Retune
           </div>
           <div id="retune-slogan" className="montserrat">
             Music Discovery Reimagined
@@ -62,7 +37,7 @@ function App() {
             </div>
           </div>
           <div id="thank-you">
-            {emaiLCreated && <span >Thank you! We will be in touch.</span>}
+            {emailCreated && <span >Thank you! We will be in touch.</span>}
           </div>
         </div>
       </div>
