@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth" dir="ltr">
+    
+<!-- Mirrored from shreethemes.in/appever/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 May 2025 21:36:28 GMT -->
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Appever - Tailwind CSS App Landing Template</title>
+        <meta name="description" content="Responsive Tailwind CSS Template">
+        <meta name="keywords" content="Onepage, creative, modern, Tailwind CSS, multipurpose, clean">
+        <meta name="author" content="Shreethemes">
+        <meta name="website" content="https://shreethemes.in/">
+        <meta name="email" content="support@shreethemes.in">
+        <meta name="version" content="1.1.0">
+        <!-- favicon -->
+        <link href="assets/images/favicon.ico" rel="shortcut icon">
+
+        <!-- Css -->
+        <link href="assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+        <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+        <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/css/tailwind.css">
+
+        <style>
+          /* Custom styling to ensure popup is hidden by default */
+          .popup {
+              display: none;
+              z-index: 9999; 
+              background-color: rgba(0, 0, 0, 0.7);
+          }
+          .blur {
+              filter: blur(5px);
+          }
+          .email-box {
+              margin-top: 5px;
+              padding-left:10px;
+          }
+          .submit-btn {
+              margin-top: 0px;
+          }
+          .instagram {
+              margin-top: -4px;
+          }
+          #popup-success {
+              padding-top: 0px
+          }
+          .spinner {
+              border: 4px solid #f3f3f3; /* Light gray background */
+              border-top: 4px solid #ff6600; /* Orange top border */
+              border-radius: 50%; /* Circular spinner */
+              width: 40px;
+              height: 40px;
+              animation: spin 1s linear infinite; /* Rotate the spinner continuously */
+              margin: 0 auto; /* Center the spinner */
+              margin-top: -4px;
+          }
+
+          /* Keyframe for rotating the spinner */
+          @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+          }
+          
+      </style>
+    </head>
+    
+    <body class="font-manrope text-base text-slate-900 dark:text-white dark:bg-slate-900">
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="logo">
+                    <img src="assets/images/logo-icon-64.png" class="d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
+                </div>
+                <div class="justify-content-center">
+                    <div class="text-center">
+                        <h4 class="mb-0 mt-2 text-lg font-semibold">Appever</h4>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader End -->
+        
+        <!-- Navbar Start
+        <nav class="navbar" id="navbar">
+            <div class="container relative flex flex-wrap items-center justify-between">
+                <a class="navbar-brand md:me-8" href="index.html">
+                    <img src="assets/images/logo-dark.png" class="h-5 inline-block dark:hidden" alt="">
+                    <img src="assets/images/logo-light.png" class="h-5 hidden dark:inline-block" alt="">
+                </a>
+
+                <div class="nav-icons flex items-center lg_992:order-2 md:ms-6">
+                    <ul class="list-none menu-social mb-0">
+                        <li class="inline">
+                            <a href="#" class="size-8 inline-flex items-center justify-center rounded-full align-middle bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white"><i data-feather="user" class="size-4"></i></a>
+                        </li>
+                        <li class="inline">
+                            <a href="#" class="h-8 px-4 text-[12px] tracking-wider inline-flex items-center justify-center font-medium rounded-full bg-red-500 text-white uppercase">Signup</a>
+                        </li>
+                    </ul>
+                    <button data-collapse="menu-collapse" type="button" class="collapse-btn inline-flex items-center ms-2 text-slate-900 dark:text-white lg_992:hidden" aria-controls="menu-collapse" aria-expanded="false">
+                        <span class="sr-only">Navigation Menu</span>
+                        <i class="mdi mdi-menu text-[24px]"></i>
+                    </button>
+                </div>
+
+                <div class="navigation lg_992:order-1 lg_992:flex hidden ms-auto" id="menu-collapse">
+                    <ul class="navbar-nav" id="navbar-navlist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#screenshot">Application</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#faqs">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#download">Download</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reviews">Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        -->
+         
+        <div id="blur-container" class="blur-container">
+            <!-- Start -->
+            <section class="relative overflow-hidden pt-12 md:pt-16 pb-24 bg-slate-50/50 dark:bg-slate-800/20 bg-[url('https://shreethemes.in/assets/images/bg1.png')] bg-no-repeat bg-center bg-cover" id="home">
+                <div class="container relative">
+                    <div class="grid md:grid-cols-2 grid-cols-1 items-center mt-6 gap-[30px] relative">
+                        <div class="md:me-6">
+                            <h6 class="text-orange-500 uppercase text-sm font-bold tracking-wider mb-3">Launching Fall 2025</h6>
+                            <h4 class="font-bold lg:leading-normal leading-normal text-[42px] lg:text-[54px] mb-5">Retune Music</h4>
+                            <p class="text-slate-400 text-lg max-w-xl">Retune is a location-based music tracking app — turning your city into a music map. Connect to Spotify, add friends, and see what people are listening to around you! Join our waitlist to be the first to try Retune.</p>
+                        
+                            <div class="mt-6">
+                              <a id="join-waitlist-btn" class="h-12 inline-flex items-center justify-center bg-orange m-1 px-6 py-3 text-white rounded-md dark:bg-orange" href="#">
+                                Join waitlist
+                              </a>
+                              
+                                <!--<a href="#"><img src="assets/images/app.png" class="h-12 inline-block m-1" alt=""></a>
+                                <a href="#"><img src="assets/images/play.png" class="h-12 inline-block m-1" alt=""></a>-->
+                                <li class="inline"><a href="https://www.instagram.com/retune.app/" target="_blank" class="instagram size-12 inline-flex items-center text-white justify-center tracking-wide align-middle text-base bg-orange rounded-md text-slate-300"><i data-feather="instagram" class="h-8 w-8 align-middle" title="instagram"></i></a></li>
+
+                              </div>
+                            
+                        </div>
+
+                        <div class="relative">
+                            <img src="assets/images/phone/Home.png" class="mx-auto w-80 relative z-2" alt="">
+                            <div class="overflow-hidden absolute md:size-[500px] size-[400px] bg-gradient-to-tl to-orange-500/20 via-orange-500/70 from-orange-500 bottom-1/2 translate-y-1/2 md:start-0 start-1/2 ltr:md:translate-x-0 ltr:-translate-x-1/2 rtl:md:translate-x-0 rtl:translate-x-1/2 z-1 shadow-md shadow-red-500/10 rounded-full"></div>
+
+                            <!--<div class="overflow-hidden after:content-[''] after:absolute after:size-16 after:bg-red-500/20 after:top-0 after:end-6 after:z-1 after:rounded-lg after:animate-[spin_10s_linear_infinite]"></div>-->
+                        </div>
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </section><!--end section-->
+            <!-- End -->
+
+            <!-- Switcher
+            <div class="fixed top-1/4 -right-2 z-3">
+                <span class="relative inline-block rotate-90">
+                    <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+                    <label class="label bg-slate-900 dark:bg-white shadow-sm dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                        <i data-feather="moon" class="size-4 text-yellow-500"></i>
+                        <i data-feather="sun" class="size-4 text-yellow-500"></i>
+                        <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] size-7"></span>
+                    </label>
+                </span>
+            </div>
+            Switcher -->
+
+            <!-- LTR & RTL Mode Code 
+            <div class="fixed top-1/3 -right-3 z-50">
+                <a href="#" id="switchRtl">
+                    <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-md dark:shadow-sm dark:shadow-gray-800 font-semibold rtl:block ltr:hidden" >LTR</span>
+                    <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-md dark:shadow-sm dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
+                </a>
+            </div>
+            LTR & RTL Mode Code -->
+      </div>
+
+        <div id="popup" class="popup fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div id="popup-content" class="bg-white p-4 pt-2 rounded-lg shadow-lg max-w-sm">
+              <button id="close-btn" class="text-2xl font-bold text-gray-600 hover:text-gray-900" 
+              style="right: 2px; font-size: 24px; color: #4b5563; cursor: pointer;">
+                  &times;
+              </button>
+              <div id="popup-form">
+                  <h3 class="text-xl text-black font-bold mb-4">Thanks for staying in tune!</h3>
+                  <p class="text-black mb-4">Enter the email linked to your Spotify account.</p>
+                  <input type="email" placeholder="Email" class="text-black email-box border p-2 rounded-md w-full mb-4" />
+                  <div id="email-error" class="text-red-500 text-sm h-4 mb-3"></div>
+                  <div class="flex justify-end">
+                      <button id="submit-btn" type="submit" class="submit-btn px-4 py-2 bg-orange text-white rounded-md cursor-pointer">Submit</button>
+                  </div>
+              </div>
+              <div id="loading-indicator" class="hidden text-center mt-4">
+                  <div class="spinner"></div>
+              </div>
+              <div id="popup-success" class="hidden text-center p-6">
+                  <h3 class="text-2xl font-bold text-black mb-2">🎉 You're on the list!</h3>
+                  <p class="text-black">We'll let you know as soon as we're live.</p>
+              </div>
+          </div>
+      </div>
+  
+
+        
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/libs/gumshoejs/gumshoe.polyfills.min.js"></script>
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script>
+          // JavaScript to toggle popup visibility
+          const joinButton = document.getElementById("join-waitlist-btn");
+          const popup = document.getElementById("popup");
+          const closeButton = document.getElementById("close-btn");
+          const blurContainer = document.getElementById("blur-container");
+          const emailInput = document.querySelector(".email-box");
+
+          // Show popup when the button is clicked
+          joinButton.addEventListener("click", (event) => {
+              event.preventDefault(); // Prevent the default link behavior
+              popup.style.display = "flex"; // Show the popup
+              blurContainer.classList.add("blur"); // Apply blur effect to the body container
+              emailInput.value = "";
+          });
+
+          // Close popup when the close button is clicked
+          closeButton.addEventListener("click", () => {
+              popup.style.display = "none"; // Hide the popup
+              blurContainer.classList.remove("blur"); // Remove blur effect from the container
+          });
+
+          // Close popup when clicking outside the popup box
+          window.addEventListener("click", (event) => {
+              if (event.target === popup) {  // If the click is outside the popup box
+                  popup.style.display = "none"; // Hide the popup
+                  blurContainer.classList.remove("blur"); // Remove blur effect from the container
+              }
+          });
+
+          function isValidEmailSyntax(email) {
+              const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              return re.test(email);
+          }
+
+          document.getElementById("submit-btn").addEventListener("click", () => {
+              const emailInput = document.querySelector(".email-box");
+              const errorDiv = document.getElementById("email-error");
+              const email = emailInput.value;
+
+              if (!isValidEmailSyntax(email)) {
+                  errorDiv.textContent = "Please enter a valid email address.";
+              } else {
+                  errorDiv.textContent = ""; // Clear any previous error
+                  document.getElementById("loading-indicator").classList.remove("hidden");
+                  document.getElementById("close-btn").classList.add("hidden");
+                  document.getElementById("popup-form").style.display = "none"; // Hide the form
+                  // Continue with your API call here
+                  console.log("Email is valid:", email);
+                  fetch("https://script.google.com/macros/s/AKfycbzoZnVN_NtJ-c42Ssge7CZ16giZE3mYNoOn7D34r1ITjx_p43w8QWUH-oAbh7CYIEN_/exec", {
+                      method: "POST",
+                      mode: "no-cors",
+                      headers: {
+                          "Content-Type": "application/x-www-form-urlencoded"
+                      },
+                      body: `email=${encodeURIComponent(email)}`
+                  }).then(() => {
+                    document.getElementById("loading-indicator").classList.add("hidden");
+                    document.getElementById("close-btn").classList.remove("hidden");
+                    document.getElementById("popup-success").classList.remove("hidden");
+                  });
+              }
+          });
+
+
+      </script>
+        <!-- JAVASCRIPTS -->
+    </body>
+
+<!-- Mirrored from shreethemes.in/appever/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 May 2025 21:36:28 GMT -->
+</html>
