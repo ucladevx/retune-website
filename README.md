@@ -12,4 +12,4 @@
 Commits to `2025-update` will automatically deploy to the live site.
 
 ## Production
-Check out [https://retune.ucladevx.com/](https://https://retune.ucladevx.com/)
+Check out [https://retune.ucladevx.com/](https://retune.ucladevx.com/)
