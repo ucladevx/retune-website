@@ -28,10 +28,6 @@
 
     if (isIPhone) {
       window.location = deepLink;
-
-      setTimeout(() => {
-        window.location = appStoreURL;
-      }, 250);
     } else {
       // Non-iOS devices: redirect to website (or app store if you want)
       message.textContent = "Open Retune in your browser or download the app!";
