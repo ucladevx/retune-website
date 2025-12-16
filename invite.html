@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retune Invite</title>
+</head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; text-align:center;">
+  <div>
+    <h1>You're invited to Retune!</h1>
+    <p id="message">Redirecting...</p>
+  </div>
+
+  <script>
+    // Get invite code from hash fragment: e.g., https://retuneapp.com/invite.html#ABC123
+    const inviteCode = window.location.hash.slice(1);
+    const message = document.getElementById("message");
+
+    // Deep link to the app
+    const deepLink = `retune://invite/${inviteCode}`;
+
+    // App store url
+    const appStoreURL = "https://testflight.apple.com/join/aM7xzdDP"
+
+    // Detect iOS
+    const isIPhone = /iPhone/i.test(navigator.userAgent);
+
+
+    if (isIPhone) {
+      window.location = deepLink;
+
+      setTimeout(() => {
+        window.location = appStoreURL;
+      }, 250);
+    } else {
+      // Non-iOS devices: redirect to website (or app store if you want)
+      message.textContent = "Open Retune in your browser or download the app!";
+      window.location = appStoreURL;
+    }
+  </script>
+</body>
+</html>
