@@ -25,6 +25,9 @@ jobs:
             echo "Error: APPLE_TEAM_ID secret is not set"
             exit 1
           fi
+          TEAM_ID="${{ secrets.APPLE_TEAM_ID }}"
+          
+          # Generate .well-known file
           mkdir -p .well-known
           cat > .well-known/apple-app-site-association << EOF
           {
@@ -32,7 +35,7 @@ jobs:
               "apps": [],
               "details": [
                 {
-                  "appID": "${{ secrets.APPLE_TEAM_ID }}.com.andrewcruz3.retune",
+                  "appID": "${TEAM_ID}.com.andrewcruz3.retune",
                   "paths": [
                     "/invite/*"
                   ]
