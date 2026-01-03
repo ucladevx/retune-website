@@ -21,17 +21,65 @@
   (function() {
     var path = window.location.pathname;
     
+    // Don't interfere with .well-known files
     if (path.indexOf('/.well-known/') === 0) {
-      return; // Don't interfere with .well-known files
+      return;
     }
     
+    // Handle /invite/{code} - redirect to query parameter format
     var inviteMatch = path.match(/\/invite\/([^\/]+)/);
     if (inviteMatch && inviteMatch[1]) {
       var code = encodeURIComponent(inviteMatch[1]);
       window.location.replace('/invite?code=' + code);
-    } else {
-      window.location.replace('/');
+      return;
     }
+    
+    // Handle /invite (without code in path) - load invite page directly
+    if (path === '/invite' || path === '/invite/') {
+      // If we're here, GitHub Pages isn't serving /invite/index.html correctly
+      // Load the invite page content directly
+      fetch('/invite/index.html')
+        .then(function(response) {
+          if (!response.ok) throw new Error('Failed to load');
+          return response.text();
+        })
+        .then(function(html) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(html, 'text/html');
+          
+          // Replace head content
+          Array.from(doc.head.children).forEach(function(child) {
+            if (child.tagName !== 'TITLE') {
+              document.head.appendChild(child.cloneNode(true));
+            }
+          });
+          
+          // Replace body content
+          document.body.innerHTML = doc.body.innerHTML;
+          
+          // Execute scripts
+          var scripts = doc.querySelectorAll('script');
+          scripts.forEach(function(oldScript) {
+            var newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+          });
+        })
+        .catch(function() {
+          // Fallback: try redirecting with trailing slash
+          if (path === '/invite') {
+            window.location.replace('/invite/' + window.location.search);
+          }
+        });
+      return;
+    }
+    
+    // For other 404s, redirect to home
+    window.location.replace('/');
   })();
 </script>
 </head>
