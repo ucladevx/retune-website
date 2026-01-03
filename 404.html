@@ -3,89 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retune Invite</title>
-
-<!-- Open Graph meta tags for invite links - important for social media previews -->
-<meta property="og:title" content="Join me on Retune" />
-<meta property="og:description" content="Discover new music and explore what people are listening to around you." />
-<meta property="og:image" content="https://raw.githubusercontent.com/ucladevx/retune-website/2025-update/assets/images/retune_icon.png" />
-<meta property="og:url" content="https://retuneapp.com/invite" />
-<meta property="og:type" content="website" />
-
-<!-- Universal Links / App Links -->
-<link rel="apple-app-site-association" href="/.well-known/apple-app-site-association">
-<meta name="apple-itunes-app" content="app-id=6741438431">
-
+<title>Page Not Found - Retune</title>
 <script>
-  // Immediate redirect - execute immediately
+  // Don't interfere with .well-known files
   (function() {
     var path = window.location.pathname;
-    
-    // Don't interfere with .well-known files
     if (path.indexOf('/.well-known/') === 0) {
-      return;
+      return; // Let GitHub Pages serve the file
     }
-    
-    // Handle /invite/{code} - redirect to query parameter format
-    var inviteMatch = path.match(/\/invite\/([^\/]+)/);
-    if (inviteMatch && inviteMatch[1]) {
-      var code = encodeURIComponent(inviteMatch[1]);
-      window.location.replace('/invite?code=' + code);
-      return;
-    }
-    
-    // Handle /invite (without code in path) - load invite page directly
-    if (path === '/invite' || path === '/invite/') {
-      // If we're here, GitHub Pages isn't serving /invite/index.html correctly
-      // Load the invite page content directly
-      fetch('/invite/index.html')
-        .then(function(response) {
-          if (!response.ok) throw new Error('Failed to load');
-          return response.text();
-        })
-        .then(function(html) {
-          var parser = new DOMParser();
-          var doc = parser.parseFromString(html, 'text/html');
-          
-          // Replace head content
-          Array.from(doc.head.children).forEach(function(child) {
-            if (child.tagName !== 'TITLE') {
-              document.head.appendChild(child.cloneNode(true));
-            }
-          });
-          
-          // Replace body content
-          document.body.innerHTML = doc.body.innerHTML;
-          
-          // Execute scripts
-          var scripts = doc.querySelectorAll('script');
-          scripts.forEach(function(oldScript) {
-            var newScript = document.createElement('script');
-            if (oldScript.src) {
-              newScript.src = oldScript.src;
-            } else {
-              newScript.textContent = oldScript.textContent;
-            }
-            document.body.appendChild(newScript);
-          });
-        })
-        .catch(function() {
-          // Fallback: try redirecting with trailing slash
-          if (path === '/invite') {
-            window.location.replace('/invite/' + window.location.search);
-          }
-        });
-      return;
-    }
-    
-    // For other 404s, redirect to home
-    window.location.replace('/');
+    // Everything else is a 404 - show page not found
   })();
 </script>
 </head>
-<body>
-  <div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; text-align:center;">
-    <p>Redirecting...</p>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; text-align:center;">
+  <div>
+    <h1>404 - Page Not Found</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <p><a href="/" style="color: #ff6600;">Return to home</a></p>
   </div>
 </body>
 </html>

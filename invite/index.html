@@ -25,18 +25,10 @@
   </div>
 
   <script>
-    // Extract invite code from URL path or query parameter
-    const path = window.location.pathname;
+    // Extract invite code from query parameter only
     const searchParams = new URLSearchParams(window.location.search);
-    const pathMatch = path.match(/\/invite\/([^\/]+)/);
-    const inviteCode = pathMatch && pathMatch[1] ? pathMatch[1] : searchParams.get('code');
+    const inviteCode = searchParams.get('code');
     
-    // Update og:url to match the actual URL (important for social media previews)
-    const ogUrl = document.getElementById('og-url');
-    if (ogUrl) {
-      // Set og:url to the current full URL
-      ogUrl.setAttribute('content', window.location.href.split('#')[0]); // Remove hash if present
-    }
     const message = document.getElementById("message");
     const content = document.getElementById("content");
 
