@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retune Invite</title>
+<script>
+  // Handle /invite/{code} routes for path-based URLs: https://retuneapp.com/invite/ABC123
+  // For GitHub Pages, this 404.html is necessary to handle routes that don't exist as files
+  const path = window.location.pathname;
+  const inviteMatch = path.match(/\/invite\/([^\/]+)/);
+  
+  if (inviteMatch && inviteMatch[1]) {
+    // Load invite.html content while preserving the original URL path
+    // This is critical for iOS universal links to work correctly
+    fetch('/invite.html')
+      .then(response => response.text())
+      .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(() => {
+        // Fallback: redirect if fetch fails (shouldn't happen in production)
+        window.location.replace('/');
+      });
+  } else {
+    // For other 404s, redirect to home
+    window.location.replace('/');
+  }
+</script>
+</head>
+<body>
+  <div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; text-align:center;">
+    <p>Loading...</p>
+  </div>
+</body>
+</html>
+

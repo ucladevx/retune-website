@@ -1,0 +1,54 @@
+name: Generate Apple App Site Association
+
+on:
+  push:
+    branches:
+      - 2025-update  # Update this to match your deployment branch
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate apple-app-site-association
+        run: |
+          if [ -z "${{ secrets.APPLE_TEAM_ID }}" ]; then
+            echo "Error: APPLE_TEAM_ID secret is not set"
+            exit 1
+          fi
+          mkdir -p .well-known
+          cat > .well-known/apple-app-site-association << EOF
+          {
+            "applinks": {
+              "apps": [],
+              "details": [
+                {
+                  "appID": "${{ secrets.APPLE_TEAM_ID }}.com.andrewcruz3.retune",
+                  "paths": [
+                    "/invite/*"
+                  ]
+                }
+              ]
+            }
+          }
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .well-known/apple-app-site-association
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update apple-app-site-association file [skip ci]"
+            git push
+          fi
+

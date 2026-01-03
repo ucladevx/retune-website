@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "REPLACED_BY_GITHUB_ACTION.com.andrewcruz3.retune",
+        "paths": [
+          "/invite/*"
+        ]
+      }
+    ]
+  }
+}
+
