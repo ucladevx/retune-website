@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 2025-update  # Update this to match your deployment branch
+    paths-ignore:
+      - '.well-known/apple-app-site-association'  # Don't trigger when this file changes
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -48,7 +50,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update apple-app-site-association file [skip ci]"
+            git commit -m "Update apple-app-site-association file [skip actions]"
             git push
           fi
 

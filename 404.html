@@ -8,6 +8,13 @@
   // Handle /invite/{code} routes for path-based URLs: https://retuneapp.com/invite/ABC123
   // For GitHub Pages, this 404.html is necessary to handle routes that don't exist as files
   const path = window.location.pathname;
+  
+  // Don't interfere with .well-known files (especially apple-app-site-association)
+  if (path.startsWith('/.well-known/')) {
+    // Let GitHub Pages serve the file directly, don't redirect
+    return;
+  }
+  
   const inviteMatch = path.match(/\/invite\/([^\/]+)/);
   
   if (inviteMatch && inviteMatch[1]) {
