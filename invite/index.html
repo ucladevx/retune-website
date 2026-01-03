@@ -31,12 +31,11 @@
     const pathMatch = path.match(/\/invite\/([^\/]+)/);
     const inviteCode = pathMatch && pathMatch[1] ? pathMatch[1] : searchParams.get('code');
     
-    // Update og:url to include the invite code if present
-    if (inviteCode) {
-      const ogUrl = document.getElementById('og-url');
-      if (ogUrl) {
-        ogUrl.setAttribute('content', `https://retuneapp.com/invite/${inviteCode}`);
-      }
+    // Update og:url to match the actual URL (important for social media previews)
+    const ogUrl = document.getElementById('og-url');
+    if (ogUrl) {
+      // Set og:url to the current full URL
+      ogUrl.setAttribute('content', window.location.href.split('#')[0]); // Remove hash if present
     }
     const message = document.getElementById("message");
     const content = document.getElementById("content");
