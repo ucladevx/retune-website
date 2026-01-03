@@ -9,9 +9,11 @@
   // For GitHub Pages, this 404.html is necessary to handle routes that don't exist as files
   const path = window.location.pathname;
   
-  // Don't interfere with .well-known files (especially apple-app-site-association)
+  // Don't interfere with .well-known files - GitHub Pages should serve them directly
+  // If we're here, the file might not exist yet, but we shouldn't redirect
   if (path.startsWith('/.well-known/')) {
-    // Let GitHub Pages serve the file directly, don't redirect
+    // Show minimal content and let the file be served if it exists
+    document.body.innerHTML = '<h1>404</h1><p>File not found. If this is apple-app-site-association, ensure the GitHub Actions workflow has run and the file is committed.</p>';
     return;
   }
   
