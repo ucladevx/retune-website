@@ -18,19 +18,8 @@
   const inviteMatch = path.match(/\/invite\/([^\/]+)/);
   
   if (inviteMatch && inviteMatch[1]) {
-    // Load invite.html content while preserving the original URL path
-    // This is critical for iOS universal links to work correctly
-    fetch('/invite.html')
-      .then(response => response.text())
-      .then(html => {
-        document.open();
-        document.write(html);
-        document.close();
-      })
-      .catch(() => {
-        // Fallback: redirect if fetch fails (shouldn't happen in production)
-        window.location.replace('/');
-      });
+    // Simple redirect to invite.html with code as query parameter
+    window.location.replace(`/invite.html?code=${encodeURIComponent(inviteMatch[1])}`);
   } else {
     // For other 404s, redirect to home
     window.location.replace('/');

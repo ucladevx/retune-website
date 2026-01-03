@@ -25,10 +25,11 @@
   </div>
 
   <script>
-    // Extract invite code from URL path: https://retuneapp.com/invite/ABC123
+    // Extract invite code from URL path or query parameter
     const path = window.location.pathname;
+    const searchParams = new URLSearchParams(window.location.search);
     const pathMatch = path.match(/\/invite\/([^\/]+)/);
-    const inviteCode = pathMatch && pathMatch[1] ? pathMatch[1] : null;
+    const inviteCode = pathMatch && pathMatch[1] ? pathMatch[1] : searchParams.get('code');
     const message = document.getElementById("message");
     const content = document.getElementById("content");
 
