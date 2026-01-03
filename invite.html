@@ -19,27 +19,37 @@
   </div>
 
   <script>
-    // Get invite code from hash fragment: e.g., https://retuneapp.com/invite.html#ABC123
     const inviteCode = window.location.hash.slice(1);
     const message = document.getElementById("message");
 
-    // Deep link to the app
     const deepLink = `retune://invite/${inviteCode}`;
+    const appStoreURL = "https://testflight.apple.com/join/aM7xzdDP";
 
-    // App store url
-    const appStoreURL = "https://testflight.apple.com/join/aM7xzdDP"
-
-    // Detect iOS
     const isIPhone = /iPhone/i.test(navigator.userAgent);
 
-
     if (isIPhone) {
-      window.location = deepLink;
+      message.textContent = "Opening Retune…";
+  
+      let fallbackTriggered = true;
+  
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          fallbackTriggered = false;
+        }
+      });
+  
+      window.location.href = deepLink;
+  
+      setTimeout(() => {
+        if (fallbackTriggered) {
+          message.textContent = "Retune not installed. Redirecting to the App Store…";
+          window.location.href = appStoreURL;
+        }
+      }, 1000);
     } else {
-      // Non-iOS devices: redirect to website (or app store if you want)
-      message.textContent = "Open Retune in your browser or download the app!";
-      window.location = appStoreURL;
+      message.textContent = "Download Retune on iOS to join!";
+      window.location.href = appStoreURL;
     }
-  </script>
+  </script>  
 </body>
 </html>
