@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retune Invite</title>
+
+<meta property="og:title" content="Join me on Retune" />
+<meta property="og:description" content="Discover new music and explore what people are listening to around you." />
+<meta property="og:image" content="https://raw.githubusercontent.com/ucladevx/retune-website/2025-update/assets/images/retune_icon.png" />
+<meta property="og:url" content="https://retuneapp.com/invite" id="og-url" />
+<meta property="og:type" content="website" />
+
+<!-- Universal Links / App Links -->
+<link rel="apple-app-site-association" href="/.well-known/apple-app-site-association">
+<meta name="apple-itunes-app" content="app-id=6741438431">
+
+</head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; text-align:center; padding: 20px;">
+  <div>
+    <h1>You're invited to Retune!</h1>
+    <div id="content">
+      <p id="message">Opening Retune...</p>
+    </div>
+  </div>
+
+  <script>
+    // Extract invite code from URL path or query parameter
+    const path = window.location.pathname;
+    const searchParams = new URLSearchParams(window.location.search);
+    const pathMatch = path.match(/\/invite\/([^\/]+)/);
+    const inviteCode = pathMatch && pathMatch[1] ? pathMatch[1] : searchParams.get('code');
+    
+    // Update og:url to include the invite code if present
+    if (inviteCode) {
+      const ogUrl = document.getElementById('og-url');
+      if (ogUrl) {
+        ogUrl.setAttribute('content', `https://retuneapp.com/invite/${inviteCode}`);
+      }
+    }
+    const message = document.getElementById("message");
+    const content = document.getElementById("content");
+
+    if (!inviteCode) {
+      message.textContent = "Invalid invite link. Please check your invitation.";
+      message.style.color = "#ff6600";
+    } else {
+      // Universal link format: https://retuneapp.com/invite/{code}
+      // iOS will handle this via associated domains (applinks:retuneapp.com)
+      
+      // Deep link for when universal link doesn't trigger
+      const deepLink = `retune://invite/${inviteCode}`;
+      
+      // App store url
+      const appStoreURL = "https://testflight.apple.com/join/aM7xzdDP";
+      
+      // Show download message for all platforms
+      // If the app opens (via deep link), user won't see this. If not, they'll see download options.
+      message.textContent = "Don't have the app?";
+      content.innerHTML = `
+        <p style="margin-bottom: 20px;">Download Retune to accept this invitation!</p>
+        <a href="${appStoreURL}" style="display: inline-block; padding: 12px 24px; background-color: #ff6600; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+          Download on TestFlight
+        </a>
+      `;
+      
+      // Detect iOS and try deep link - if app is installed, it will open automatically
+      const isIPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isIPhone) {
+        // Use a small delay to ensure message is rendered, then attempt deep link
+        // If app opens, user won't see the page. If not, they'll see download message.
+        requestAnimationFrame(() => {
+          window.location = deepLink;
+        });
+      }
+    }
+  </script>
+</body>
+</html>
+

@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Retune Invite</title>
+
+<!-- Open Graph meta tags for invite links - important for social media previews -->
+<meta property="og:title" content="Join me on Retune" />
+<meta property="og:description" content="Discover new music and explore what people are listening to around you." />
+<meta property="og:image" content="https://raw.githubusercontent.com/ucladevx/retune-website/2025-update/assets/images/retune_icon.png" />
+<meta property="og:url" content="https://retuneapp.com/invite" />
+<meta property="og:type" content="website" />
+
+<!-- Universal Links / App Links -->
+<link rel="apple-app-site-association" href="/.well-known/apple-app-site-association">
+<meta name="apple-itunes-app" content="app-id=6741438431">
+
 <script>
   // Handle /invite/{code} routes for path-based URLs: https://retuneapp.com/invite/ABC123
   // For GitHub Pages, this 404.html is necessary to handle routes that don't exist as files
@@ -18,9 +30,15 @@
     const inviteMatch = path.match(/\/invite\/([^\/]+)/);
     
     if (inviteMatch && inviteMatch[1]) {
-      // Immediate redirect to invite.html with code as query parameter
-      const code = encodeURIComponent(inviteMatch[1]);
-      window.location.href = `/invite.html?code=${code}`;
+      // Update og:url to include the actual invite code for better previews
+      const code = inviteMatch[1];
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) {
+        ogUrl.setAttribute('content', `https://retuneapp.com/invite/${code}`);
+      }
+      
+      // Immediate redirect to /invite with code as query parameter
+      window.location.href = `/invite?code=${encodeURIComponent(code)}`;
       return;
     }
     
