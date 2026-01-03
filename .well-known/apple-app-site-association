@@ -5,7 +5,7 @@
       {
         "appID": "SW4TH644Q8.com.andrewcruz3.retune",
         "paths": [
-          "/invite/*"
+          "/invite*"
         ]
       }
     ]

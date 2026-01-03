@@ -37,7 +37,7 @@ jobs:
                 {
                   "appID": "${TEAM_ID}.com.andrewcruz3.retune",
                   "paths": [
-                    "/invite/*"
+                    "/invite*"
                   ]
                 }
               ]
