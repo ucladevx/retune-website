@@ -7,28 +7,31 @@
 <script>
   // Handle /invite/{code} routes for path-based URLs: https://retuneapp.com/invite/ABC123
   // For GitHub Pages, this 404.html is necessary to handle routes that don't exist as files
-  const path = window.location.pathname;
-  
-  // Don't interfere with .well-known files - they're now served directly via _config.yml
-  if (path.startsWith('/.well-known/')) {
-    // Let GitHub Pages serve the file directly
-    return;
-  }
-  
-  const inviteMatch = path.match(/\/invite\/([^\/]+)/);
-  
-  if (inviteMatch && inviteMatch[1]) {
-    // Simple redirect to invite.html with code as query parameter
-    window.location.replace(`/invite.html?code=${encodeURIComponent(inviteMatch[1])}`);
-  } else {
+  (function() {
+    const path = window.location.pathname;
+    
+    // Don't interfere with .well-known files - they're now served directly via _config.yml
+    if (path.startsWith('/.well-known/')) {
+      return;
+    }
+    
+    const inviteMatch = path.match(/\/invite\/([^\/]+)/);
+    
+    if (inviteMatch && inviteMatch[1]) {
+      // Immediate redirect to invite.html with code as query parameter
+      const code = encodeURIComponent(inviteMatch[1]);
+      window.location.href = `/invite.html?code=${code}`;
+      return;
+    }
+    
     // For other 404s, redirect to home
-    window.location.replace('/');
-  }
+    window.location.href = '/';
+  })();
 </script>
 </head>
 <body>
   <div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif; text-align:center;">
-    <p>Loading...</p>
+    <p>Redirecting...</p>
   </div>
 </body>
 </html>
