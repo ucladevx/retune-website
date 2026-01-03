@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "REPLACED_BY_GITHUB_ACTION.com.andrewcruz3.retune",
+        "appID": "SW4TH644Q8.com.andrewcruz3.retune",
         "paths": [
           "/invite/*"
         ]
@@ -11,4 +11,3 @@
     ]
   }
 }
-
