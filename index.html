@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light scroll-smooth" dir="ltr">
+<html lang="en" class="dark scroll-smooth" dir="ltr">
     
 <!-- Mirrored from shreethemes.in/appever/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 May 2025 21:36:28 GMT -->
 <head>
@@ -21,49 +21,241 @@
         <link rel="stylesheet" href="assets/css/tailwind.css">
 
         <style>
+          * {
+              box-sizing: border-box;
+          }
+          
+          body {
+              line-height: 1.6;
+          }
+          
           /* Custom styling to ensure popup is hidden by default */
           .popup {
               display: none;
               z-index: 9999; 
-              background-color: rgba(0, 0, 0, 0.7);
           }
           .blur {
               filter: blur(5px);
+              transition: filter 0.3s ease;
           }
+          
+          /* Button Styles */
+          .btn-primary {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              padding: 14px 32px;
+              font-size: 16px;
+              font-weight: 600;
+              color: white;
+              background-color: #5649ab;
+              border: none;
+              border-radius: 12px;
+              cursor: pointer;
+              text-decoration: none;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 14px rgba(86, 73, 171, 0.3);
+              min-height: 48px;
+          }
+          
+          .btn-primary:hover {
+              background-color: #6b5fc7;
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(86, 73, 171, 0.4);
+          }
+          
+          .btn-primary:active {
+              transform: translateY(0);
+              box-shadow: 0 2px 10px rgba(86, 73, 171, 0.3);
+          }
+          
+          .btn-icon {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 48px;
+              height: 48px;
+              padding: 0;
+              border-radius: 12px;
+              background-color: #5649ab;
+              color: white;
+              text-decoration: none;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 14px rgba(86, 73, 171, 0.3);
+          }
+          
+          .btn-icon:hover {
+              background-color: #6b5fc7;
+              transform: translateY(-2px) scale(1.05);
+              box-shadow: 0 6px 20px rgba(86, 73, 171, 0.4);
+          }
+          
+          .btn-secondary {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              padding: 12px 28px;
+              font-size: 15px;
+              font-weight: 600;
+              color: white;
+              background-color: #5649ab;
+              border: none;
+              border-radius: 10px;
+              cursor: pointer;
+              text-decoration: none;
+              transition: all 0.3s ease;
+              box-shadow: 0 3px 12px rgba(86, 73, 171, 0.25);
+          }
+          
+          .btn-secondary:hover {
+              background-color: #6b5fc7;
+              transform: translateY(-1px);
+              box-shadow: 0 5px 16px rgba(86, 73, 171, 0.35);
+          }
+          
+          /* Email Form Styles */
           .email-box {
-              margin-top: 5px;
-              padding-left:10px;
+              margin-top: 8px;
+              padding: 14px 16px;
+              width: 100%;
+              background-color: #0A1716;
+              color: white;
+              border: 2px solid #5649ab;
+              border-radius: 10px;
+              font-size: 15px;
+              transition: all 0.3s ease;
           }
+          
+          .email-box::placeholder {
+              color: rgba(255, 255, 255, 0.5);
+          }
+          
+          .email-box:focus {
+              outline: none;
+              border-color: #6b5fc7;
+              box-shadow: 0 0 0 3px rgba(86, 73, 171, 0.2);
+              background-color: #0f1f1e;
+          }
+          
           .submit-btn {
               margin-top: 0px;
           }
-          .instagram {
-              margin-top: -4px;
+          
+          /* Popup Styles */
+          #popup-content {
+              border-radius: 20px;
+              padding: 32px 28px;
+              box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+              max-width: 400px;
+              width: calc(100% - 32px);
           }
+          
+          #close-btn {
+              width: 36px;
+              height: 36px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              transition: all 0.3s ease;
+          }
+          
+          #close-btn:hover {
+              background-color: rgba(86, 73, 171, 0.2);
+              color: #5649ab;
+          }
+          
           #popup-success {
-              padding-top: 0px
+              padding-top: 0px;
           }
+          
+          /* Spinner */
           .spinner {
-              border: 4px solid #f3f3f3; /* Light gray background */
-              border-top: 4px solid #ff6600; /* Orange top border */
-              border-radius: 50%; /* Circular spinner */
+              border: 4px solid #1C1C1C;
+              border-top: 4px solid #5649ab;
+              border-radius: 50%;
               width: 40px;
               height: 40px;
-              animation: spin 1s linear infinite; /* Rotate the spinner continuously */
-              margin: 0 auto; /* Center the spinner */
+              animation: spin 1s linear infinite;
+              margin: 0 auto;
               margin-top: -4px;
           }
 
-          /* Keyframe for rotating the spinner */
           @keyframes spin {
               0% { transform: rotate(0deg); }
               100% { transform: rotate(360deg); }
           }
           
+          /* Typography Improvements */
+          h4 {
+              letter-spacing: -0.02em;
+              line-height: 1.1;
+          }
+          
+          
+          /* Section Spacing */
+          section {
+              min-height: 100vh;
+              display: flex;
+              align-items: center;
+              padding: 40px 0;
+          }
+          
+          /* Container Improvements */
+          .container {
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 0 24px;
+              width: 100%;
+          }
+          
+          /* Button Group */
+          .button-group {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              flex-wrap: wrap;
+              margin-top: 32px;
+          }
+          
+          /* Mobile centering - only on small screens */
+          .mobile-center {
+              margin-left: auto;
+              margin-right: auto;
+          }
+          
+          .mobile-center-buttons {
+              justify-content: center;
+          }
+          
+          @media (min-width: 768px) {
+              .mobile-center {
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
+              }
+              
+              .mobile-center-buttons {
+                  justify-content: flex-start !important;
+              }
+              
+              /* Force left alignment on large screens */
+              .left-align-on-desktop h6,
+              .left-align-on-desktop h4,
+              .left-align-on-desktop p {
+                  text-align: left !important;
+              }
+          }
+          
+          /* Error Message */
+          #email-error {
+              min-height: 20px;
+              margin-bottom: 12px;
+          }
+          
       </style>
     </head>
     
-    <body class="font-manrope text-base text-slate-900 dark:text-white dark:bg-slate-900">
+    <body class="font-manrope text-base text-white" style="background-color: #0A1716;">
         <!-- Loader Start -->
         <!-- <div id="preloader">
             <div id="status">
@@ -133,36 +325,33 @@
          
         <div id="blur-container" class="blur-container">
             <!-- Start -->
-            <section class="relative overflow-hidden pt-12 md:pt-16 pb-24 bg-slate-50/50 dark:bg-slate-800/20 bg-[url('https://shreethemes.in/assets/images/bg1.png')] bg-no-repeat bg-center bg-cover" id="home">
+            <section class="relative overflow-hidden pt-12 md:pt-16 pb-24 bg-no-repeat bg-center bg-cover" id="home" style="background-color: #0A1716;">
                 <div class="container relative">
                     <div class="grid md:grid-cols-2 grid-cols-1 items-center mt-6 gap-[30px] relative">
-                        <div class="md:me-6">
-                            <h6 class="text-orange-500 uppercase text-sm font-bold tracking-wider mb-3">Launching 2026</h6>
-                            <h4 class="font-bold lg:leading-normal leading-normal text-[42px] lg:text-[54px] mb-5">Retune Music</h4>
-                            <p class="text-slate-400 text-lg max-w-xl">Retune is a location-based music tracking app — turning your city into a music map. Connect to Spotify, add friends, and see what people are listening to around you! Join our waitlist to be the first to try Retune.</p>
+                        <div class="md:me-6 left-align-on-desktop">
+                            <h6 class="uppercase text-sm font-bold tracking-wider mb-3 text-center md:text-left" style="color: #5649ab; letter-spacing: 0.1em;">Launching 2026</h6>
+                            <h4 class="font-bold lg:leading-normal leading-normal text-[42px] lg:text-[54px] mb-5 text-white text-center md:text-left">Retune Music</h4>
+                            <p class="text-lg max-w-xl text-center md:text-left mobile-center" style="color: rgba(255, 255, 255, 0.85); line-height: 1.7;">Retune is a location-based music tracking app — turning your city into a music map. Connect to Spotify, add friends, and see what people are listening to around you! Join our waitlist to be the first to try Retune.</p>
                         
-                            <div class="mt-6">
-                              <a id="join-waitlist-btn" class="h-12 inline-flex items-center justify-center bg-orange m-1 px-6 py-3 text-white rounded-md dark:bg-orange" href="#">
+                            <div class="button-group mt-6 justify-center md:justify-start mobile-center-buttons">
+                              <a id="join-waitlist-btn" class="btn-primary" href="#">
                                 Join waitlist
                               </a>
                               
-                                <!--<a href="#"><img src="assets/images/app.png" class="h-12 inline-block m-1" alt=""></a>
-                                <a href="#"><img src="assets/images/play.png" class="h-12 inline-block m-1" alt=""></a>-->
-                                <li class="inline"><a href="https://www.instagram.com/retune.app/" target="_blank" class="instagram size-12 inline-flex items-center text-white justify-center tracking-wide align-middle text-base bg-orange rounded-md text-slate-300"><i data-feather="instagram" class="h-8 w-8 align-middle" title="instagram"></i></a></li>
-
-                              </div>
+                              <a href="https://www.instagram.com/retune.app/" target="_blank" class="btn-icon" aria-label="Follow us on Instagram">
+                                <i data-feather="instagram" class="h-6 w-6" title="Instagram"></i>
+                              </a>
+                            </div>
                             
                         </div>
 
                         <div class="relative">
                             <img src="assets/images/phone/Home.png" class="mx-auto w-80 relative z-2" alt="">
-                            <div class="overflow-hidden absolute md:size-[500px] size-[400px] bg-gradient-to-tl to-orange-500/20 via-orange-500/70 from-orange-500 bottom-1/2 translate-y-1/2 md:start-0 start-1/2 ltr:md:translate-x-0 ltr:-translate-x-1/2 rtl:md:translate-x-0 rtl:translate-x-1/2 z-1 shadow-md shadow-red-500/10 rounded-full"></div>
-
-                            <!--<div class="overflow-hidden after:content-[''] after:absolute after:size-16 after:bg-red-500/20 after:top-0 after:end-6 after:z-1 after:rounded-lg after:animate-[spin_10s_linear_infinite]"></div>-->
+                            <div class="overflow-hidden absolute md:size-[500px] size-[400px] bottom-1/2 translate-y-1/2 md:start-0 start-1/2 ltr:md:translate-x-0 ltr:-translate-x-1/2 rtl:md:translate-x-0 rtl:translate-x-1/2 z-1 shadow-md rounded-full" style="background: radial-gradient(circle, rgba(86, 73, 171, 0.3) 0%, rgba(86, 73, 171, 0.1) 100%);"></div>
                         </div>
-                    </div><!--end grid-->
-                </div><!--end container-->
-            </section><!--end section-->
+                    </div>
+                </div>
+            </section>
             <!-- End -->
 
             <!-- Switcher
@@ -188,27 +377,29 @@
             LTR & RTL Mode Code -->
       </div>
 
-        <div id="popup" class="popup fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div id="popup-content" class="bg-white p-4 pt-2 rounded-lg shadow-lg max-w-sm">
-              <button id="close-btn" class="text-2xl font-bold text-gray-600 hover:text-gray-900" 
-              style="right: 2px; font-size: 24px; color: #4b5563; cursor: pointer;">
+        <div id="popup" class="popup fixed inset-0 flex justify-center items-center" style="background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px);">
+          <div id="popup-content" class="max-w-md w-full mx-4 relative" style="background-color: #1C1C1C;">
+              <button id="close-btn" class="absolute" 
+              style="right: 16px; top: 16px; font-size: 28px; color: #ffffff; cursor: pointer; background: none; border: none; z-index: 10;">
                   &times;
               </button>
-              <div id="popup-form">
-                  <h3 class="text-xl text-black font-bold mb-4">Thanks for staying in tune!</h3>
-                  <p class="text-black mb-4">Enter your email for the latest updates on our app.</p>
-                  <input type="email" placeholder="Email" class="text-black email-box border p-2 rounded-md w-full mb-4" />
-                  <div id="email-error" class="text-red-500 text-sm h-4 mb-3"></div>
-                  <div class="flex justify-end">
-                      <button id="submit-btn" type="submit" class="submit-btn px-4 py-2 bg-orange text-white rounded-md cursor-pointer">Submit</button>
+              <div id="popup-form" class="p-8">
+                  <h3 class="text-2xl font-bold mb-2 text-white" style="margin-bottom: 8px;">Thanks for staying in tune!</h3>
+                  <p class="mb-6 text-white" style="color: rgba(255, 255, 255, 0.8); margin-bottom: 24px;">Enter your email for the latest updates on our app.</p>
+                  <input type="email" placeholder="Enter your email address" class="email-box" />
+                  <div id="email-error" class="text-red-400 text-sm mt-2 mb-4" style="min-height: 20px;"></div>
+                  <div class="flex justify-end mt-6">
+                      <button id="submit-btn" type="submit" class="btn-secondary">Submit</button>
                   </div>
               </div>
-              <div id="loading-indicator" class="hidden text-center mt-4">
+              <div id="loading-indicator" class="hidden text-center py-8">
                   <div class="spinner"></div>
+                  <p class="text-white mt-4" style="color: rgba(255, 255, 255, 0.8);">Submitting...</p>
               </div>
-              <div id="popup-success" class="hidden text-center p-6">
-                  <h3 class="text-2xl font-bold text-black mb-2">🎉 You're on the list!</h3>
-                  <p class="text-black">We'll let you know as soon as we're live.</p>
+              <div id="popup-success" class="hidden text-center p-8">
+                  <div class="text-5xl mb-4">🎉</div>
+                  <h3 class="text-2xl font-bold mb-3 text-white">You're on the list!</h3>
+                  <p class="text-white" style="color: rgba(255, 255, 255, 0.8);">We'll let you know as soon as we're live.</p>
               </div>
           </div>
       </div>
