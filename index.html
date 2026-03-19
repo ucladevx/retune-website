@@ -198,8 +198,15 @@
           section {
               min-height: 100vh;
               display: flex;
-              align-items: center;
-              padding: 40px 0;
+              align-items: flex-start;
+              padding: 100px 0 40px 0;
+          }
+          
+          @media (min-width: 768px) {
+              section {
+                  align-items: center;
+                  padding: 40px 0;
+              }
           }
           
           /* Container Improvements */
@@ -257,6 +264,29 @@
     </head>
     
     <body class="font-manrope text-base text-white" style="background-color: #0A1716;">
+        <header id="top-bar" style="position: fixed; top: 0; left: 0; width: 100%; height: 88px; z-index: 50; display: flex; align-items: center; padding: 0 24px; background-color: rgba(15, 31, 30, 0); border-bottom: 1px solid transparent; transition: all 0.3s ease;">
+            <a href="index.html">
+                <img src="assets/images/retune_icon.png" alt="Retune" style="width: 48px; height: 48px; border-radius: 12px; transition: transform 0.3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </a>
+        </header>
+        <script>
+            window.addEventListener('scroll', function() {
+                var topBar = document.getElementById('top-bar');
+                if (window.scrollY > 20) {
+                    topBar.style.backgroundColor = 'rgba(15, 31, 30, 0.95)';
+                    topBar.style.backdropFilter = 'blur(10px)';
+                    topBar.style.WebkitBackdropFilter = 'blur(10px)';
+                    topBar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+                    topBar.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+                } else {
+                    topBar.style.backgroundColor = 'rgba(15, 31, 30, 0)';
+                    topBar.style.backdropFilter = 'none';
+                    topBar.style.WebkitBackdropFilter = 'none';
+                    topBar.style.boxShadow = '0 4px 20px rgba(0,0,0,0)';
+                    topBar.style.borderColor = 'transparent';
+                }
+            });
+        </script>
         <!-- Loader Start -->
         <!-- <div id="preloader">
             <div id="status">
