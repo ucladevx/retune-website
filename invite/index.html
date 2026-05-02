@@ -14,6 +14,7 @@
 <!-- Universal Links / App Links -->
 <link rel="apple-app-site-association" href="/.well-known/apple-app-site-association">
 <meta name="apple-itunes-app" content="app-id=6741438431">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   * {
@@ -57,18 +58,19 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 32px;
+    padding: 10px 20px;
     font-size: 16px;
     font-weight: 600;
     color: white;
     background-color: #5649ab;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 14px rgba(86, 73, 171, 0.3);
-    min-height: 48px;
+    height: 52px;
+    gap: 10px;
   }
   
   .btn:hover {
@@ -149,15 +151,19 @@
       const deepLink = `retune://invite/${inviteCode}`;
       
       // App store url
-      const appStoreURL = "https://testflight.apple.com/join/aM7xzdDP";
+      const appStoreURL = "https://apps.apple.com/us/app/retune-app/id6741438431";
       
       // Show download message for all platforms
       // If the app opens (via deep link), user won't see this. If not, they'll see download options.
       message.textContent = "Don't have the app?";
       content.innerHTML = `
         <p style="margin-bottom: 24px;">Download Retune to accept this invitation!</p>
-        <a href="${appStoreURL}" class="btn">
-          Download on TestFlight
+        <a href="${appStoreURL}" class="btn" style="min-width: 180px;">
+          <i class="fab fa-apple" style="font-size: 36px; flex-shrink: 0;"></i>
+          <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1;">
+            <span style="font-size: 11px; font-weight: 600; opacity: 0.9; margin-bottom: 3px; letter-spacing: 0.01em;">Download on the</span>
+            <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em;">App Store</span>
+          </div>
         </a>
       `;
       

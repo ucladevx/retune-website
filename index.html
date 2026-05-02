@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Retune - Music Discovery Reimagined</title>
-        <meta name="description" content="Retune is a location-based music tracking app that turns your city into a music map. Connect to Spotify, add friends, and explore what people are listening to nearby! See where you listen to music the most and which songs you play at each location. Join our waitlist to be the first to try Retune.">
+        <meta name="description" content="Retune is a location-based music tracking app that turns your city into a music map. Connect to Spotify, add friends, and explore what people are listening to nearby! See where you listen to music the most and which songs you play at each location. Download Retune on the App Store today.">
         <meta name="keywords" content="Retune, UCLA, DevX, music, discovery, Spotify">
         <meta name="author" content="UCLA DevX">
         <meta name="website" content="https://retune.ucladevx.com/">
@@ -45,18 +45,19 @@
               display: inline-flex;
               align-items: center;
               justify-content: center;
-              padding: 14px 32px;
+              padding: 10px 20px;
               font-size: 16px;
               font-weight: 600;
               color: white;
               background-color: #5649ab;
               border: none;
-              border-radius: 12px;
+              border-radius: 14px;
               cursor: pointer;
               text-decoration: none;
               transition: all 0.3s ease;
               box-shadow: 0 4px 14px rgba(86, 73, 171, 0.3);
-              min-height: 48px;
+              height: 52px;
+              gap: 10px;
           }
           
           .btn-primary:hover {
@@ -362,11 +363,15 @@
                         <div class="md:me-6 left-align-on-desktop">
                             <h6 class="uppercase text-sm font-bold tracking-wider mb-3 text-center md:text-left" style="color: #5649ab; letter-spacing: 0.1em;">Launching 2026</h6>
                             <h4 class="font-bold lg:leading-normal leading-normal text-[42px] lg:text-[54px] mb-5 text-white text-center md:text-left">Retune Music</h4>
-                            <p class="text-lg max-w-xl text-center md:text-left mobile-center" style="color: rgba(255, 255, 255, 0.85); line-height: 1.7;">Retune is a location-based music tracking app that turns your city into a music map. Connect to Spotify, add friends, and explore what people are listening to nearby! See where you listen to music the most and which songs you play at each location. Join our waitlist to be the first to try Retune.</p>
+                            <p class="text-lg max-w-xl text-center md:text-left mobile-center" style="color: rgba(255, 255, 255, 0.85); line-height: 1.7;">Retune is a location-based music tracking app that turns your city into a music map. Connect to Spotify, add friends, and explore what people are listening to nearby! See where you listen to music the most and which songs you play at each location. Download Retune on the App Store today.</p>
                         
                             <div class="button-group mt-6 justify-center md:justify-start mobile-center-buttons">
-                              <a id="join-waitlist-btn" class="btn-primary" href="#">
-                                Join waitlist
+                              <a href="https://apps.apple.com/us/app/retune-app/id6741438431" target="_blank" class="btn-primary" style="min-width: 180px;">
+                                <i class="fab fa-apple" style="font-size: 36px; flex-shrink: 0;"></i>
+                                <div class="flex flex-col items-start justify-center leading-none">
+                                  <span style="font-size: 11px; font-weight: 600; opacity: 0.9; margin-bottom: 3px; letter-spacing: 0.01em;">Download on the</span>
+                                  <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em;">App Store</span>
+                                </div>
                               </a>
                               
                               <a href="https://www.instagram.com/retune.app/" target="_blank" class="btn-icon" aria-label="Follow us on Instagram">
@@ -412,32 +417,7 @@
             LTR & RTL Mode Code -->
       </div>
 
-        <div id="popup" class="popup fixed inset-0 flex justify-center items-center" style="background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px);">
-          <div id="popup-content" class="max-w-md w-full mx-4 relative" style="background-color: #1C1C1C;">
-              <button id="close-btn" class="absolute" 
-              style="right: 16px; top: 16px; font-size: 28px; color: #ffffff; cursor: pointer; background: none; border: none; z-index: 10;">
-                  &times;
-              </button>
-              <div id="popup-form" class="p-8">
-                  <h3 class="text-2xl font-bold mb-2 text-white" style="margin-bottom: 8px;">Thanks for staying in tune!</h3>
-                  <p class="mb-6 text-white" style="color: rgba(255, 255, 255, 0.8); margin-bottom: 24px;">Enter your email for the latest updates on our app.</p>
-                  <input type="email" placeholder="Enter your email address" class="email-box" />
-                  <div id="email-error" class="text-red-400 text-sm mt-2 mb-4" style="min-height: 20px;"></div>
-                  <div class="flex justify-end mt-6">
-                      <button id="submit-btn" type="submit" class="btn-secondary">Submit</button>
-                  </div>
-              </div>
-              <div id="loading-indicator" class="hidden text-center py-8">
-                  <div class="spinner"></div>
-                  <p class="text-white mt-4" style="color: rgba(255, 255, 255, 0.8);">Submitting...</p>
-              </div>
-              <div id="popup-success" class="hidden text-center p-8">
-                  <div class="text-5xl mb-4">🎉</div>
-                  <h3 class="text-2xl font-bold mb-3 text-white">You're on the list!</h3>
-                  <p class="text-white" style="color: rgba(255, 255, 255, 0.8);">We'll let you know as soon as we're live.</p>
-              </div>
-          </div>
-      </div>
+
   
 
         
@@ -449,72 +429,6 @@
         <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
-        <script>
-          // JavaScript to toggle popup visibility
-          const joinButton = document.getElementById("join-waitlist-btn");
-          const popup = document.getElementById("popup");
-          const closeButton = document.getElementById("close-btn");
-          const blurContainer = document.getElementById("blur-container");
-          const emailInput = document.querySelector(".email-box");
-
-          // Show popup when the button is clicked
-          joinButton.addEventListener("click", (event) => {
-              event.preventDefault(); // Prevent the default link behavior
-              popup.style.display = "flex"; // Show the popup
-              blurContainer.classList.add("blur"); // Apply blur effect to the body container
-              emailInput.value = "";
-          });
-
-          // Close popup when the close button is clicked
-          closeButton.addEventListener("click", () => {
-              popup.style.display = "none"; // Hide the popup
-              blurContainer.classList.remove("blur"); // Remove blur effect from the container
-          });
-
-          // Close popup when clicking outside the popup box
-          window.addEventListener("click", (event) => {
-              if (event.target === popup && document.getElementById("loading-indicator").classList.contains("hidden")) {  // If the click is outside the popup box
-                  popup.style.display = "none"; // Hide the popup
-                  blurContainer.classList.remove("blur"); // Remove blur effect from the container
-              }
-          });
-
-          function isValidEmailSyntax(email) {
-              const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-              return re.test(email);
-          }
-
-          document.getElementById("submit-btn").addEventListener("click", () => {
-              const emailInput = document.querySelector(".email-box");
-              const errorDiv = document.getElementById("email-error");
-              const email = emailInput.value;
-
-              if (!isValidEmailSyntax(email)) {
-                  errorDiv.textContent = "Please enter a valid email address.";
-              } else {
-                  errorDiv.textContent = ""; // Clear any previous error
-                  document.getElementById("loading-indicator").classList.remove("hidden");
-                  document.getElementById("close-btn").classList.add("hidden");
-                  document.getElementById("popup-form").style.display = "none"; // Hide the form
-                  // Continue with your API call here
-                  console.log("Email is valid:", email);
-                  fetch("https://script.google.com/macros/s/AKfycbzoZnVN_NtJ-c42Ssge7CZ16giZE3mYNoOn7D34r1ITjx_p43w8QWUH-oAbh7CYIEN_/exec", {
-                      method: "POST",
-                      mode: "no-cors",
-                      headers: {
-                          "Content-Type": "application/x-www-form-urlencoded"
-                      },
-                      body: `email=${encodeURIComponent(email)}`
-                  }).then(() => {
-                    document.getElementById("loading-indicator").classList.add("hidden");
-                    document.getElementById("close-btn").classList.remove("hidden");
-                    document.getElementById("popup-success").classList.remove("hidden");
-                  });
-              }
-          });
-
-
-      </script>
         <!-- JAVASCRIPTS -->
     </body>
 
