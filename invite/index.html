@@ -147,14 +147,10 @@
       // Universal link format: https://retuneapp.com/invite/{code}
       // iOS will handle this via associated domains (applinks:retuneapp.com)
       
-      // Deep link for when universal link doesn't trigger
-      const deepLink = `retune://invite/${inviteCode}`;
-      
       // App store url
       const appStoreURL = "https://apps.apple.com/us/app/retune-app/id6741438431";
       
       // Show download message for all platforms
-      // If the app opens (via deep link), user won't see this. If not, they'll see download options.
       message.textContent = "Don't have the app?";
       content.innerHTML = `
         <p style="margin-bottom: 24px;">Download Retune to accept this invitation!</p>
@@ -166,16 +162,6 @@
           </div>
         </a>
       `;
-      
-      // Detect iOS and try deep link - if app is installed, it will open automatically
-      const isIPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (isIPhone) {
-        // Use a small delay to ensure message is rendered, then attempt deep link
-        // If app opens, user won't see the page. If not, they'll see download message.
-        requestAnimationFrame(() => {
-          window.location = deepLink;
-        });
-      }
     }
   </script>
 </body>
